@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dog of Odysseus ($ARGOS) — An OG Odyssey in Token Form</title>
+<meta name="description" content="Dog of Odysseus — the loyal companion who waited twenty years. Now sealed on-chain. Solana memecoin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#EAE0C5;
+    --parchment-deep:#DFCFA6;
+    --parchment-dark:#CBB784;
+    --ink:#2B2013;
+    --ink-soft:#4A3A26;
+    --bronze:#9C7A3C;
+    --bronze-deep:#7A5E2C;
+    --oxblood:#7A2E20;
+    --oxblood-deep:#5C2016;
+    --gold:#C9A227;
+    --max:1160px;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'EB Garamond', serif;
+    background:var(--parchment);
+    color:var(--ink);
+    overflow-x:hidden;
+    position:relative;
+  }
+  /* paper grain */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:2000; opacity:.35; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  h1,h2,h3,.display{ font-family:'Cormorant Garamond', serif; font-weight:700; color:var(--ink); }
+  .label{ font-family:'Cinzel', serif; font-weight:600; letter-spacing:.14em; text-transform:uppercase; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 26px; }
+  ::selection{ background:var(--oxblood); color:var(--parchment); }
+  a:focus-visible, button:focus-visible{ outline:3px solid var(--oxblood); outline-offset:3px; }
+
+  /* ---------- ornament divider ---------- */
+  .ornament{ display:flex; align-items:center; justify-content:center; gap:14px; margin:34px 0; color:var(--bronze); }
+  .ornament .line{ height:1px; width:70px; background:linear-gradient(90deg, transparent, var(--bronze), transparent); }
+  .ornament svg{ width:22px; height:22px; }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(234,224,197,.88); backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(122,94,44,.35);
+  }
+  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:12px 26px; }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand .medallion{ width:48px; height:48px; border-radius:50%; overflow:hidden; border:2px solid var(--bronze); box-shadow:0 0 0 3px var(--parchment), 0 0 0 4px var(--bronze-deep); }
+  .brand .medallion img{ width:100%; height:100%; object-fit:cover; object-position:50% 22%; transform:scale(1.9); }
+  .brand span{ font-family:'Cormorant Garamond'; font-weight:700; font-size:1.25rem; color:var(--ink); }
+  .brand small{ display:block; font-family:'Cinzel'; font-size:.6rem; letter-spacing:.1em; color:var(--bronze-deep); }
+  nav.links{ display:flex; gap:28px; }
+  nav.links a{ font-family:'Cinzel'; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); position:relative; }
+  nav.links a::after{ content:""; position:absolute; left:0; bottom:-6px; width:0; height:1px; background:var(--oxblood); transition:width .25s ease; }
+  nav.links a:hover::after{ width:100%; }
+  .burger{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; }
+  .burger span{ width:24px; height:2px; background:var(--ink); }
+
+  /* ---------- HERO ---------- */
+  .hero{ position:relative; padding:150px 0 100px; text-align:center; overflow:hidden; }
+  .hero::before{
+    content:""; position:absolute; inset:0; z-index:0;
+    background:radial-gradient(ellipse at 50% 0%, var(--parchment-deep) 0%, var(--parchment) 60%);
+  }
+  .hero-content{ position:relative; z-index:1; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:10px; }
+  .eyebrow::before, .eyebrow::after{ content:"◆"; font-size:.6rem; color:var(--bronze); }
+  .label.eyebrow{ font-size:.74rem; color:var(--oxblood-deep); margin-bottom:26px; }
+
+  .seal-frame{
+    width:min(340px, 70vw); margin:0 auto 34px; position:relative; border-radius:50%;
+    border:3px solid var(--bronze); padding:10px; background:var(--parchment-deep);
+    box-shadow:0 0 0 6px var(--parchment), 0 0 0 7px var(--bronze-deep), 0 22px 44px -20px rgba(43,32,19,.5);
+  }
+  .seal-frame .ring{ border-radius:50%; overflow:hidden; border:1px dashed var(--bronze-deep); }
+  .seal-frame img{ width:100%; height:auto; object-position:50% 15%; object-fit:cover; aspect-ratio:1/1; transform:scale(1.85) translateY(2%); }
+  .seal-frame::after{ content:""; position:absolute; inset:-14px; border-radius:50%; border:1px solid rgba(156,122,60,.3); animation:spin 60s linear infinite; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  .hero h1{ font-size:clamp(2.6rem,7vw,5.2rem); line-height:1.02; margin-bottom:20px; }
+  .hero h1 em{ font-style:italic; color:var(--oxblood); }
+  .hero p.tagline{ max-width:600px; margin:0 auto; font-size:clamp(1.05rem,2vw,1.3rem); color:var(--ink-soft); font-style:italic; }
+  .hero-ctas{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:38px; }
+
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:15px 30px; font-family:'Cinzel'; font-size:.76rem; letter-spacing:.09em; text-transform:uppercase; font-weight:600; border-radius:4px; cursor:pointer; border:1px solid var(--ink); transition:transform .2s ease, box-shadow .2s ease; }
+  .btn-primary{ background:var(--oxblood); color:var(--parchment); border-color:var(--oxblood-deep); box-shadow:0 10px 24px -6px rgba(122,46,32,.55); }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 16px 30px -8px rgba(122,46,32,.6); }
+  .btn-ghost{ background:transparent; color:var(--ink); }
+  .btn-ghost:hover{ background:var(--ink); color:var(--parchment); }
+
+  /* CA / wax seal component */
+  .ca-plate{ margin:44px auto 0; max-width:600px; border:1px solid var(--bronze); background:var(--parchment-deep); border-radius:10px; padding:18px 20px; display:flex; align-items:center; gap:16px; }
+  .ca-plate .txt{ text-align:left; flex:1; min-width:0; }
+  .ca-plate .lbl{ font-family:'Cinzel'; font-size:.6rem; letter-spacing:.1em; color:var(--bronze-deep); display:block; margin-bottom:4px; }
+  .ca-plate .addr{ font-family:'EB Garamond'; font-size:.86rem; color:var(--ink); word-break:break-all; }
+
+  .wax-seal{
+    position:relative; flex:none; width:58px; height:58px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #9c3d2a, var(--oxblood) 55%, var(--oxblood-deep) 100%);
+    border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 14px -4px rgba(92,32,22,.6), inset 0 -3px 6px rgba(0,0,0,.25), inset 0 3px 4px rgba(255,255,255,.15);
+    transition:transform .15s ease;
+  }
+  .wax-seal svg{ width:26px; height:26px; stroke:rgba(234,224,197,.9); fill:none; stroke-width:1.4; }
+  .wax-seal:hover{ transform:scale(1.06); }
+  .wax-seal.stamped{ animation:stamp .38s ease; }
+  @keyframes stamp{ 0%{ transform:scale(1);} 40%{ transform:scale(.82);} 70%{ transform:scale(1.08);} 100%{ transform:scale(1);} }
+  .seal-ripple{ position:absolute; inset:-8px; border-radius:50%; border:2px solid var(--oxblood); opacity:0; }
+  .seal-ripple.go{ animation:ripple .5s ease-out; }
+  @keyframes ripple{ from{ opacity:.7; transform:scale(.7);} to{ opacity:0; transform:scale(1.6);} }
+
+  /* ---------- INSCRIPTION TICKER ---------- */
+  .plaque-ticker{ background:var(--ink); overflow:hidden; white-space:nowrap; padding:13px 0; border-top:3px double var(--bronze); border-bottom:3px double var(--bronze); }
+  .plaque-ticker .track{ display:inline-flex; gap:50px; animation:scrollx 32s linear infinite; }
+  .plaque-ticker span{ font-family:'Cinzel'; font-size:.78rem; letter-spacing:.14em; color:var(--parchment-deep); text-transform:uppercase; }
+  @keyframes scrollx{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+
+  /* ---------- SECTION generic ---------- */
+  section{ position:relative; padding:100px 0; }
+  .kicker{ display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+  .kicker .num{ font-family:'Cinzel'; font-size:.7rem; color:var(--parchment); background:var(--oxblood); padding:4px 9px; border-radius:2px; }
+  .kicker .txt{ font-family:'Cinzel'; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--bronze-deep); }
+  h2.title{ font-size:clamp(2rem,4vw,3rem); margin-bottom:22px; }
+  .reveal{ opacity:0; transform:translateY(32px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- LORE ---------- */
+  .lore{ background:var(--parchment); }
+  .lore .grid{ display:grid; grid-template-columns:.9fr 1.1fr; gap:60px; align-items:center; }
+  .lore-frame{ border:8px solid var(--parchment-deep); outline:1px solid var(--bronze); border-radius:6px; overflow:hidden; box-shadow:0 26px 50px -26px rgba(43,32,19,.45); position:relative; }
+  .lore-frame img{ width:100%; }
+  .lore-frame figcaption{ font-family:'Cinzel'; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--bronze-deep); text-align:center; padding:10px 0; background:var(--parchment-deep); }
+  .lore p{ font-size:1.08rem; color:var(--ink-soft); margin-bottom:16px; }
+  .lore p b{ color:var(--ink); }
+  .pull-quote{ font-family:'Cormorant Garamond'; font-style:italic; font-size:1.4rem; color:var(--oxblood-deep); border-left:3px solid var(--oxblood); padding-left:20px; margin:26px 0; }
+
+  /* ---------- TOKENOMICS ---------- */
+  .tokenomics{ background:var(--ink); color:var(--parchment); }
+  .tokenomics .kicker .txt{ color:var(--gold); }
+  .tokenomics h2{ color:var(--parchment); }
+  .tokenomics > .wrap > p{ color:#d3c39c; max-width:600px; margin-bottom:46px; }
+  .ledger{ display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:rgba(201,162,39,.25); border:1px solid rgba(201,162,39,.3); border-radius:8px; overflow:hidden; }
+  .ledger .cell{ background:#241a10; padding:28px 22px; transition:background .2s ease; }
+  .ledger .cell:hover{ background:#312415; }
+  .ledger .cell .ic{ font-family:'Cormorant Garamond'; font-size:1.9rem; color:var(--gold); margin-bottom:8px; }
+  .ledger .cell b{ display:block; font-family:'Cinzel'; font-size:1rem; color:var(--parchment); margin-bottom:6px; }
+  .ledger .cell span{ font-size:.86rem; color:#c2b090; }
+  .token-note{ margin-top:22px; font-size:.85rem; color:#a7967a; font-style:italic; }
+  .ca-full{ margin-top:40px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; background:#241a10; border:1px dashed var(--gold); padding:20px 22px; border-radius:8px; }
+  .ca-full .addr{ font-size:.86rem; color:var(--gold); word-break:break-all; flex:1; min-width:240px; }
+  .ca-full .lbl{ font-family:'Cinzel'; font-size:.62rem; letter-spacing:.1em; color:#c2b090; text-transform:uppercase; display:block; margin-bottom:4px; }
+
+  /* ---------- HOW TO BUY / RITES ---------- */
+  .buy{ background:var(--parchment); }
+  .rites{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+  .rite{ background:var(--parchment-deep); border:1px solid var(--bronze); border-radius:8px; padding:30px 24px; position:relative; transition:transform .25s ease, box-shadow .25s ease; }
+  .rite:hover{ transform:translateY(-6px); box-shadow:0 20px 36px -22px rgba(43,32,19,.4); }
+  .rite .roman{ font-family:'Cinzel'; font-size:1.6rem; color:var(--oxblood); margin-bottom:12px; }
+  .rite h3{ font-size:1.2rem; margin-bottom:8px; }
+  .rite p{ font-size:.92rem; color:var(--ink-soft); }
+  .buy-links{ margin-top:40px; display:flex; gap:16px; flex-wrap:wrap; }
+  .buy-links a{ font-family:'Cinzel'; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; background:var(--ink); color:var(--parchment); padding:13px 22px; border-radius:4px; transition:background .2s ease, transform .2s ease; }
+  .buy-links a:hover{ background:var(--oxblood); transform:translateY(-3px); }
+
+  /* ---------- ROADMAP: THE TWENTY YEARS ---------- */
+  .roadmap{ background:var(--parchment-deep); }
+  .scroll-line{ position:relative; margin-top:60px; padding-left:40px; }
+  .scroll-line::before{ content:""; position:absolute; left:11px; top:0; bottom:0; width:2px; background:var(--bronze); }
+  .scroll-line .thread{ position:absolute; left:11px; top:0; width:2px; background:var(--oxblood); height:0; transition:height .1s linear; }
+  .era{ position:relative; padding:0 0 54px 30px; }
+  .era:last-child{ padding-bottom:0; }
+  .era::before{ content:""; position:absolute; left:-30px; top:4px; width:22px; height:22px; border-radius:50%; background:var(--parchment); border:2px solid var(--bronze); }
+  .era.passed::before{ background:var(--oxblood); border-color:var(--oxblood-deep); }
+  .era .yr{ font-family:'Cinzel'; font-size:.68rem; letter-spacing:.1em; color:var(--oxblood-deep); text-transform:uppercase; margin-bottom:6px; display:block; }
+  .era h3{ font-size:1.4rem; margin-bottom:8px; }
+  .era p{ color:var(--ink-soft); max-width:560px; }
+
+  /* ---------- COMMUNITY ---------- */
+  .community{ background:var(--ink); color:var(--parchment); text-align:center; }
+  .community h2{ color:var(--parchment); }
+  .community p{ color:#d3c39c; max-width:560px; margin:0 auto 34px; font-size:1.05rem; }
+  .social-row{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+  .social-btn{ display:flex; align-items:center; gap:10px; border:1px solid var(--gold); color:var(--gold); padding:14px 24px; border-radius:4px; font-family:'Cinzel'; font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; transition:background .2s ease, color .2s ease, transform .2s ease; }
+  .social-btn:hover{ background:var(--gold); color:var(--ink); transform:translateY(-4px); }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:#1c140c; color:#a7967a; padding:50px 0 30px; }
+  footer .top{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; margin-bottom:28px; }
+  footer .brand span{ color:var(--parchment); }
+  footer .brand .medallion{ border-color:var(--gold); box-shadow:none; }
+  footer .fine{ font-size:.78rem; border-top:1px solid rgba(201,162,39,.2); padding-top:20px; line-height:1.7; }
+  footer .fine .addr{ color:var(--gold); }
+
+  .toast{ position:fixed; bottom:26px; left:50%; transform:translate(-50%,20px); background:var(--oxblood); color:var(--parchment); font-family:'Cinzel'; font-size:.76rem; letter-spacing:.08em; text-transform:uppercase; padding:13px 24px; border-radius:4px; opacity:0; pointer-events:none; transition:opacity .3s ease, transform .3s ease; z-index:1000; }
+  .toast.show{ opacity:1; transform:translate(-50%,0); }
+
+  @media (max-width:920px){
+    .lore .grid{ grid-template-columns:1fr; }
+    .ledger, .rites{ grid-template-columns:repeat(2,1fr); }
+    nav.links{ position:fixed; top:68px; left:0; right:0; background:var(--parchment); flex-direction:column; padding:22px 26px; gap:16px; transform:translateY(-140%); transition:transform .3s ease; border-bottom:1px solid var(--bronze); }
+    nav.links.open{ transform:translateY(0); }
+    .burger{ display:flex; }
+  }
+  @media (max-width:640px){
+    .ledger, .rites{ grid-template-columns:1fr; }
+    section{ padding:76px 0; }
+    .ca-plate{ flex-direction:column; }
+    .ca-plate .txt{ text-align:center; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="medallion"><img src="WEUOs_uR.jpg" alt="Dog of Odysseus seal"></span>
+      <div>
+        <span>Dog of Odysseus</span>
+        <small>$ARGOS · Solana</small>
+      </div>
+    </a>
+    <nav class="links" id="navLinks">
+      <a href="#lore">The Lore</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#buy">How to Buy</a>
+      <a href="#roadmap">The Twenty Years</a>
+      <a href="#community">Community</a>
+    </nav>
+    <button class="burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-content wrap">
+    <div class="label eyebrow">An OG Odyssey, Sealed On-Chain</div>
+    <div class="seal-frame">
+      <div class="ring"><img src="WEUOs_uR.jpg" alt="Ancient intaglio seal of Odysseus and his dog"></div>
+    </div>
+    <h1>Dog of <em>Odysseus</em></h1>
+    <p class="tagline">Twenty years he waited at the gate. One glance, one final breath of recognition — then rest. This is that loyalty, minted.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#buy">Acquire $ARGOS</a>
+      <a class="btn btn-ghost" href="#lore">Read the Lore</a>
+    </div>
+    <div class="ca-plate">
+      <button class="wax-seal" id="heroSeal" aria-label="Copy contract address">
+        <span class="seal-ripple" id="heroRipple"></span>
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 5-3 8-7 9-4-1-7-4-7-9V7z"/></svg>
+      </button>
+      <div class="txt">
+        <span class="lbl">Contract Address</span>
+        <span class="addr">3zbaboajDtmsu6EKBiT5d3BmbTMLyFXbgwkKSoZMpump</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="plaque-ticker" aria-hidden="true">
+  <div class="track" id="tickerTrack">
+    <span>ΚΥΩΝ ΟΔΥΣΣΕΩΣ</span><span>·</span><span>Loyal Unto The End</span><span>·</span><span>Twenty Years At The Gate</span><span>·</span>
+    <span>ΚΥΩΝ ΟΔΥΣΣΕΩΣ</span><span>·</span><span>Loyal Unto The End</span><span>·</span><span>Twenty Years At The Gate</span><span>·</span>
+  </div>
+</div>
+
+<section class="lore" id="lore">
+  <div class="wrap grid">
+    <figure class="lore-frame reveal">
+      <img src="WEUOs_uR.jpg" alt="Engraved seal of Odysseus and his dog Argos">
+      <figcaption>Fig. I — The Seal of Recognition</figcaption>
+    </figure>
+    <div class="reveal">
+      <div class="kicker"><span class="num">Fig. I</span><span class="txt">The Lore</span></div>
+      <h2 class="title">A dog who simply refused to forget.</h2>
+      <p>In Homer's <b>Odyssey</b>, Argos was a puppy when Odysseus sailed for Troy. He grew old on a dung heap, abandoned and flea-bitten, while his master fought a war and wandered the wine-dark sea for two more decades.</p>
+      <p>When Odysseus finally returned — disguised as a beggar, unrecognized by his own wife and household — it was <b>Argos</b> who knew him instantly. He lifted his head, wagged his tail once, and died at peace, having held on just long enough.</p>
+      <p class="pull-quote">"He waited for Odysseus, and when he saw him, he knew." — recognition needs no disguise.</p>
+      <p>$ARGOS is built on that same patience: a community that holds through the wandering years, waiting for the return.</p>
+    </div>
+  </div>
+</section>
+
+<section class="tokenomics" id="tokenomics">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="num">Fig. II</span><span class="txt">The Estate</span></div>
+    <h2 class="title reveal">Tokenomics, kept honest</h2>
+    <p class="reveal">A fair-launch memecoin on Solana, sealed the moment it left the mint. <em>(Placeholder figures — replace with your live data before promoting.)</em></p>
+    <div class="ledger reveal">
+      <div class="cell"><div class="ic">Ⅰ</div><b>1,000,000,000</b><span>Total supply</span></div>
+      <div class="cell"><div class="ic">Ⅱ</div><b>LP Burned</b><span>Liquidity status</span></div>
+      <div class="cell"><div class="ic">Ⅲ</div><b>0 / 0</b><span>Buy / sell tax</span></div>
+      <div class="cell"><div class="ic">Ⅳ</div><b>Fair Launch</b><span>via pump.fun</span></div>
+    </div>
+    <div class="ca-full reveal">
+      <div style="flex:none;">
+        <span class="lbl">Contract Address</span>
+        <span class="addr">3zbaboajDtmsu6EKBiT5d3BmbTMLyFXbgwkKSoZMpump</span>
+      </div>
+      <button class="wax-seal" id="tokSeal" aria-label="Copy contract address" style="width:48px;height:48px;"><span class="seal-ripple" id="tokRipple"></span><svg viewBox="0 0 24 24" style="width:20px;height:20px;"><path d="M12 3l7 4v5c0 5-3 8-7 9-4-1-7-4-7-9V7z"/></svg></button>
+    </div>
+    <p class="token-note">Figures shown are placeholders for demonstration — update supply, tax, and liquidity details with your real launch data.</p>
+  </div>
+</section>
+
+<section class="buy" id="buy">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="num">Fig. III</span><span class="txt">The Rites of Acquisition</span></div>
+    <h2 class="title reveal">How to buy $ARGOS</h2>
+    <div class="rites reveal">
+      <div class="rite"><div class="roman">Ⅰ</div><h3>Raise a wallet</h3><p>Install Phantom (or any Solana wallet) and safeguard your seed phrase offline, always.</p></div>
+      <div class="rite"><div class="roman">Ⅱ</div><h3>Provision with SOL</h3><p>Buy SOL on any exchange and send it to your new wallet to cover gas and the swap.</p></div>
+      <div class="rite"><div class="roman">Ⅲ</div><h3>Make the exchange</h3><p>Paste the contract address into Jupiter, Raydium, or pump.fun directly, then confirm the swap.</p></div>
+      <div class="rite"><div class="roman">Ⅳ</div><h3>Hold the vigil</h3><p>Add $ARGOS to your wallet, join the community, and wait out the wandering years together.</p></div>
+    </div>
+    <div class="buy-links">
+      <a href="https://pump.fun/coin/3zbaboajDtmsu6EKBiT5d3BmbTMLyFXbgwkKSoZMpump" target="_blank" rel="noopener">View on pump.fun</a>
+      <a href="https://jup.ag/swap/SOL-3zbaboajDtmsu6EKBiT5d3BmbTMLyFXbgwkKSoZMpump" target="_blank" rel="noopener">Swap on Jupiter</a>
+      <a href="https://solscan.io/token/3zbaboajDtmsu6EKBiT5d3BmbTMLyFXbgwkKSoZMpump" target="_blank" rel="noopener">View on Solscan</a>
+    </div>
+  </div>
+</section>
+
+<section class="roadmap" id="roadmap">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="num">Fig. IV</span><span class="txt">The Twenty Years</span></div>
+    <h2 class="title reveal">A roadmap, told as a myth</h2>
+    <div class="scroll-line reveal" id="scrollLine">
+      <div class="thread" id="thread"></div>
+      <div class="era passed" data-era>
+        <span class="yr">Year 0 — Departure</span>
+        <h3>The Launch</h3>
+        <p>$ARGOS sets sail: fair mint on pump.fun, liquidity locked or burned, contract sealed and verified.</p>
+      </div>
+      <div class="era" data-era>
+        <span class="yr">The Long Wait — Building</span>
+        <h3>Holding the Gate</h3>
+        <p>Community grows on the dung heap and the docks alike — meme pushes, holder giveaways, first exchange listings.</p>
+      </div>
+      <div class="era" data-era>
+        <span class="yr">The Disguise — Expansion</span>
+        <h3>Unrecognized, Undeterred</h3>
+        <p>Partnerships, KOL exposure, and volume build quietly while the wider market still doesn't recognize what's coming.</p>
+      </div>
+      <div class="era" data-era>
+        <span class="yr">The Return — Recognition</span>
+        <h3>One Look, Full Circle</h3>
+        <p>Major exposure and trend-stage growth: the moment the whole timeline finally recognizes $ARGOS for what it is.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="community" id="community">
+  <div class="wrap">
+    <h2 class="title reveal">Keep the vigil with us</h2>
+    <p class="reveal">$ARGOS lives and dies by its holders — loyal, patient, and impossible to fool with a disguise. Come wait at the gate with the rest of the pack.</p>
+    <div class="social-row reveal">
+      <a class="social-btn" href="#" target="_blank" rel="noopener">𝕏 Twitter</a>
+      <a class="social-btn" href="#" target="_blank" rel="noopener">Telegram</a>
+      <a class="social-btn" href="https://pump.fun/coin/3zbaboajDtmsu6EKBiT5d3BmbTMLyFXbgwkKSoZMpump" target="_blank" rel="noopener">pump.fun</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="#top">
+        <span class="medallion" style="width:36px;height:36px;"><img src="WEUOs_uR.jpg" alt=""></span>
+        <span>Dog of Odysseus · $ARGOS</span>
+      </a>
+    </div>
+    <div class="fine">
+      $ARGOS is a community memecoin inspired by Homer's Odyssey, created for entertainment purposes. It has no intrinsic value, no guarantee of return, and no formal team obligations. Nothing here is financial advice — always verify the contract address independently before transacting: <span class="addr">3zbaboajDtmsu6EKBiT5d3BmbTMLyFXbgwkKSoZMpump</span>. Digital assets are highly volatile; only risk what you can afford to lose.
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Sealed &amp; Copied</div>
+
+<script>
+  // mobile nav
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // wax-seal copy
+  const CA = "3zbaboajDtmsu6EKBiT5d3BmbTMLyFXbgwkKSoZMpump";
+  const toast = document.getElementById('toast');
+  function seal(btnId, rippleId){
+    const btn = document.getElementById(btnId);
+    const ripple = document.getElementById(rippleId);
+    if(!btn) return;
+    btn.addEventListener('click', () => {
+      navigator.clipboard?.writeText(CA).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = CA; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta);
+      });
+      btn.classList.remove('stamped'); void btn.offsetWidth; btn.classList.add('stamped');
+      if(ripple){ ripple.classList.remove('go'); void ripple.offsetWidth; ripple.classList.add('go'); }
+      toast.classList.add('show');
+      clearTimeout(window._t); window._t = setTimeout(() => toast.classList.remove('show'), 2000);
+    });
+  }
+  seal('heroSeal','heroRipple');
+  seal('tokSeal','tokRipple');
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // roadmap thread fill + era activation on scroll
+  const scrollLine = document.getElementById('scrollLine');
+  const thread = document.getElementById('thread');
+  const eras = document.querySelectorAll('.era');
+  function updateThread(){
+    const rect = scrollLine.getBoundingClientRect();
+    const vh = window.innerHeight;
+    let progress = (vh*0.75 - rect.top) / rect.height;
+    progress = Math.min(1, Math.max(0, progress));
+    thread.style.height = (progress * rect.height) + 'px';
+    const idx = Math.floor(progress * eras.length);
+    eras.forEach((e,i) => e.classList.toggle('passed', i < idx || (i===0)));
+  }
+  window.addEventListener('scroll', updateThread, { passive:true });
+  window.addEventListener('resize', updateThread);
+  updateThread();
+
+  // reduce ticker motion
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.getElementById('tickerTrack').style.animation = 'none';
+  }
+</script>
+</body>
+</html>
